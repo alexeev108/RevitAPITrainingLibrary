@@ -47,14 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryUtils.cs" />
     <Compile Include="DuctsUtils.cs" />
     <Compile Include="FamilyInstanceUtils.cs" />
     <Compile Include="FamilySymbolsUtils.cs" />
+    <Compile Include="FilterUtils.cs" />
     <Compile Include="LevelsUtils.cs" />
     <Compile Include="PipesUtils.cs" />
+    <Compile Include="SchedulesUtils.cs" />
     <Compile Include="SelectionUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TagsUtils.cs" />
+    <Compile Include="ViewsUtils.cs" />
     <Compile Include="WallsUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -44,6 +44,22 @@ namespace RevitAPITrainingLibrary
             }                
                 
             return newSymbol;
-        }        
+        }
+
+        public static List<FamilySymbol> GetSheetsFamilySymbols(ExternalCommandData commandData)
+        {
+            UIApplication uiApplication = commandData.Application;
+            UIDocument uIDocument = uiApplication.ActiveUIDocument;
+            Document document = uIDocument.Document;
+
+            FilteredElementCollector collector = new FilteredElementCollector(document);
+            List<FamilySymbol> familyInstances = collector
+                .OfCategory(BuiltInCategory.OST_TitleBlocks)
+                .WhereElementIsElementType()
+                .Cast<FamilySymbol>()
+                .ToList();
+
+            return familyInstances;
+        }
     }
 }
