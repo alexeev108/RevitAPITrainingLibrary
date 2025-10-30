@@ -127,5 +127,11 @@ namespace RevitAPITrainingLibrary
                 
             return pickedPoint;
         }
+
+        public static XYZ GetElementCenter(Element element)
+        {
+            BoundingBoxXYZ bounding = element.get_BoundingBox(null);
+            return (bounding.Max + bounding.Min) / 2;
+        }
     }
 }

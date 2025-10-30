@@ -52,8 +52,10 @@
     <Compile Include="FamilyInstanceUtils.cs" />
     <Compile Include="FamilySymbolsUtils.cs" />
     <Compile Include="FilterUtils.cs" />
+    <Compile Include="GroupPickFilter.cs" />
     <Compile Include="LevelsUtils.cs" />
     <Compile Include="PipesUtils.cs" />
+    <Compile Include="RoomsUtils.cs" />
     <Compile Include="SchedulesUtils.cs" />
     <Compile Include="SelectionUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

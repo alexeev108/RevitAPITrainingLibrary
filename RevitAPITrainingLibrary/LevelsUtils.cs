@@ -23,5 +23,13 @@ namespace RevitAPITrainingLibrary
 
             return levels;
         }
+
+        public static Level GetLevelToUse(ExternalCommandData commandData, string level)
+        {
+            Level levelToUse = GetLevels(commandData)
+                .Where(x => x.Name.Equals(level))
+                .FirstOrDefault();
+            return levelToUse;
+        }
     }
 }
