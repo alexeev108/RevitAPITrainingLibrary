@@ -10,6 +10,23 @@ namespace RevitAPITrainingLibrary
 {
     public class FamilySymbolsUtils
     {
+        public static FamilySymbol GetDoorsFamilySymbols(ExternalCommandData commandData)
+        {
+            UIApplication uiApplication = commandData.Application;
+            UIDocument uIDocument = uiApplication.ActiveUIDocument;
+            Document document = uIDocument.Document;
+
+            FilteredElementCollector collector = new FilteredElementCollector(document);
+            FamilySymbol doorType = collector
+                .OfClass(typeof(FamilySymbol))
+                .OfCategory(BuiltInCategory.OST_Doors)
+                .OfType<FamilySymbol>()
+                .Where(x => x.Name.Equals("0915 x 2134 мм"))
+                .Where(x => x.FamilyName.Equals("Одиночные-Щитовые"))
+                .FirstOrDefault();
+            return doorType;
+        }
+
         public static List<FamilySymbol> GetFamilySymbols(ExternalCommandData commandData)
         {
             UIApplication uiApplication = commandData.Application;
@@ -60,6 +77,23 @@ namespace RevitAPITrainingLibrary
                 .ToList();
 
             return familyInstances;
+        }
+
+        public static FamilySymbol GetWindowsFamilySymbols(ExternalCommandData commandData)
+        {
+            UIApplication uiApplication = commandData.Application;
+            UIDocument uIDocument = uiApplication.ActiveUIDocument;
+            Document document = uIDocument.Document;
+
+            FilteredElementCollector collector = new FilteredElementCollector(document);
+            FamilySymbol windowType = collector
+                .OfClass(typeof(FamilySymbol))
+                .OfCategory(BuiltInCategory.OST_Windows)
+                .OfType<FamilySymbol>()
+                .Where(x => x.Name.Equals("0406 x 0610 мм"))
+                .Where(x => x.FamilyName.Equals("Фиксированные"))
+                .FirstOrDefault();
+            return windowType;
         }
     }
 }

@@ -22,12 +22,20 @@ namespace RevitAPITrainingLibrary
 
             List<Wall> walls = new List<Wall>();
 
-            foreach (var curve in GetFixedCurves(commandData))
+            using (var ts = new Transaction(document, "Создание стен"))
             {
-                Wall wall = Wall.Create(document, curve, level_1.Id, false);
-                wall.get_Parameter(BuiltInParameter.WALL_HEIGHT_TYPE).Set(level_2.Id);
-                walls.Add(wall);
+                ts.Start();
+
+                foreach (var curve in GetFixedCurves(commandData))
+                {
+                    Wall wall = Wall.Create(document, curve, level_1.Id, false);
+                    wall.get_Parameter(BuiltInParameter.WALL_HEIGHT_TYPE).Set(level_2.Id);
+                    walls.Add(wall);
+                }
+
+                ts.Commit();
             }
+           
             return walls;
         }
 
@@ -93,6 +101,15 @@ namespace RevitAPITrainingLibrary
 
             return wallTypes;
         }
+
+        public static XYZ CoordCenterToInsert(Wall wall)
+        {
+            LocationCurve locationCurve = wall.Location as LocationCurve;
+            XYZ point_1 = locationCurve.Curve.GetEndPoint(0);
+            XYZ point_2 = locationCurve.Curve.GetEndPoint(1);
+            XYZ point = (point_1 + point_2) / 2;
+            return point;
+        }        
     }
 
 
