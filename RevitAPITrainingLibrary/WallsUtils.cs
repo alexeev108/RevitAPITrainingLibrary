@@ -111,6 +111,4 @@ namespace RevitAPITrainingLibrary
             return point;
         }        
     }
-
-
 }

@@ -39,9 +39,9 @@ namespace RevitAPITrainingLibrary
                 ts.Start();
 
                 ReferencePlane referencePlane = document.Create.NewReferencePlane(
-                    new XYZ(p1.X, p1.Y, walls[0].get_Parameter(BuiltInParameter.WALL_HEIGHT_TYPE).AsDouble()),
-                    new XYZ(p1.X, p1.Y, walls[0].get_Parameter(BuiltInParameter.WALL_HEIGHT_TYPE).AsDouble() + 10),
-                    new XYZ(p1.X, p2.Y, walls[0].get_Parameter(BuiltInParameter.WALL_HEIGHT_TYPE).AsDouble()),
+                    new XYZ(0, 0, walls[0].get_Parameter(BuiltInParameter.WALL_HEIGHT_TYPE).AsDouble()),
+                    new XYZ(0, 0, walls[0].get_Parameter(BuiltInParameter.WALL_HEIGHT_TYPE).AsDouble() + 10),
+                    new XYZ(0, 20, walls[0].get_Parameter(BuiltInParameter.WALL_HEIGHT_TYPE).AsDouble()),
                     document.ActiveView);
                 document.Create.NewExtrusionRoof(curveArray, referencePlane, level, roofType, p2.Y, walls[0].get_Parameter(BuiltInParameter.CURVE_ELEM_LENGTH).AsDouble());
 

@@ -95,5 +95,21 @@ namespace RevitAPITrainingLibrary
                 .FirstOrDefault();
             return windowType;
         }
+
+        public static FamilySymbol GetOpeningFamilySymbol(ExternalCommandData commandData)
+        {
+            UIApplication uiApplication = commandData.Application;
+            UIDocument uIDocument = uiApplication.ActiveUIDocument;
+            Document arDocument = uIDocument.Document;
+
+            FilteredElementCollector collector = new FilteredElementCollector(arDocument);
+            FamilySymbol openingFam = collector
+                .OfClass(typeof(FamilySymbol))
+                .OfCategory(BuiltInCategory.OST_GenericModel)
+                .OfType<FamilySymbol>()                
+                .Where(x => x.FamilyName.Equals("Отверстия"))
+                .FirstOrDefault();
+            return openingFam;
+        }
     }
 }

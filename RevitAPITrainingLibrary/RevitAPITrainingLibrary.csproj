@@ -55,6 +55,7 @@
     <Compile Include="GroupPickFilter.cs" />
     <Compile Include="LevelsUtils.cs" />
     <Compile Include="PipesUtils.cs" />
+    <Compile Include="ReferenceWithContextElementEqualityComparer.cs" />
     <Compile Include="RoofsUtils.cs" />
     <Compile Include="RoomsUtils.cs" />
     <Compile Include="SchedulesUtils.cs" />

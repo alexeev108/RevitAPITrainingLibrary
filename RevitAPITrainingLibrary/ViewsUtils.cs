@@ -23,5 +23,19 @@ namespace RevitAPITrainingLibrary
                 .ToList();
             return views;
         }
+        public static View3D Get3DView(ExternalCommandData commandData)
+        {
+            UIApplication uiApplication = commandData.Application;
+            UIDocument uIDocument = uiApplication.ActiveUIDocument;
+            Document arDocument = uIDocument.Document;
+
+            View3D view3D = new FilteredElementCollector(arDocument)
+                .OfClass(typeof(View3D))
+                .OfType<View3D>()
+                .Where(p => !p.IsTemplate)
+                .FirstOrDefault();
+                
+            return view3D;
+        }
     }
 }
